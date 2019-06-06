@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">新酒新油</string>
+
+    <string name="category_manager">分类管理</string>
+    <string name="book_manager">图书管理</string>
+
+    <string name="loading">加载中…</string>
+    <string name="loading_no_more">已加载全部</string>
+
+    <!-- Error View -->
+    <string name="error_view_click_to_refresh">点击屏幕,重新加载</string>
+    <string name="error_view_no_data">暂无内容</string>
+    <string name="error_view_loading">加载中…</string>
+    <string name="error_view_load_error_click_to_refresh">内容加载失败\r\n点击重新加载</string>
+    <string name="error_view_network_error_click_to_refresh">没有可用的网络</string>
+    <string name="tip_network_error">没有可用的网络</string>
+
+    <!-- 分类 -->
+    <string name="hint_category_id">请输入分类编号</string>
+    <string name="hint_category_name">请输入分类名称</string>
+    <string name="hint_category_desc">请输入分类描述</string>
+    <string name="hint_book_code">请输入图书序号</string>
+    <string name="hint_book_name">请输入图书名称</string>
+    <string name="hint_book_publisher">请输入出版社</string>
+    <string name="hint_book_author">请输入图书作者</string>
+    <string name="hint_borrow_people">请输入借阅人姓名</string>
+    <string name="hint_borrow_phone">请输入借阅人电话</string>
+
+    <string name="title_activity_book_detail">图书详情</string>
+    <string name="borrow_info">填写借阅人信息</string>
+    <string name="action_settings">Settings</string>
+    <string name="cancel_text">取消</string>
+    <string name="sure_text">确定</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="win.aspring.bookrxandroid.bookdetail.BookDetailActivity"
+    tools:showIn="@layout/activity_book_detail">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/book_category_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="图书分类:"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/book_category_text"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/book_category_text"
+            android:text="@string/action_settings"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_code_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/book_category_text"
+            android:layout_marginTop="10dp"
+            android:text="图书编号:"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/book_code_text"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/book_code_text"
+            android:text="@string/action_settings"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/book_code_text"
+            android:layout_marginTop="10dp"
+            android:text="图书名称:"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/book_name_text"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/book_name_text"
+            android:text="@string/action_settings"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_publisher_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/book_name_text"
+            android:layout_marginTop="10dp"
+            android:text="出版社:"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_publisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/book_publisher_text"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/book_publisher_text"
+            android:text="@string/action_settings"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_author_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/book_publisher_text"
+            android:layout_marginTop="10dp"
+            android:text="图书作者:"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/book_author_text"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/book_author_text"
+            android:text="@string/action_settings"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_state_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/book_author_text"
+            android:layout_marginTop="10dp"
+            android:text="在馆状态:"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/book_state_text"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/book_state_text"
+            android:text="@string/action_settings"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_size_16" />
+
+        <RelativeLayout
+            android:id="@+id/borrow_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/book_state_text">
+
+            <TextView
+                android:id="@+id/borrow_people_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="借阅人:"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/borrow_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/borrow_people_text"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/borrow_people_text"
+                android:text="@string/action_settings"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/borrow_phone_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/borrow_people_text"
+                android:layout_marginTop="10dp"
+                android:text="联系方式:"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/borrow_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/borrow_phone_text"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/borrow_phone_text"
+                android:text="@string/action_settings"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/borrow_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/borrow_phone_text"
+                android:layout_marginTop="10dp"
+                android:text="借阅时间:"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/borrow_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/borrow_time_text"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/borrow_time_text"
+                android:text="@string/action_settings"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/text_size_16" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/book_backtime_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/borrow_state"
+            android:layout_marginTop="10dp"
+            android:text="上次归还时间:"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_backtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/book_backtime_text"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/book_backtime_text"
+            android:text="@string/action_settings"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_createtime_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/book_backtime_text"
+            android:layout_marginTop="10dp"
+            android:text="创建时间:"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_createtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/book_createtime_text"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/book_createtime_text"
+            android:text="@string/action_settings"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_updatetime_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/book_createtime_text"
+            android:layout_marginTop="10dp"
+            android:text="修改时间:"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/book_updatetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/book_updatetime_text"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/book_updatetime_text"
+            android:text="@string/action_settings"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_size_16" />
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>
