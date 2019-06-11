@@ -20,6 +20,8 @@ import win.aspring.common.util.OutdatedUtils;
 
 /**
  * Toast
+ *
+ * @author v
  */
 public class CustomToast {
     @ColorInt

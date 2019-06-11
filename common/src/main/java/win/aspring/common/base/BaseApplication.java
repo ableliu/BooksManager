@@ -7,7 +7,7 @@ import android.content.res.Resources;
 /**
  * 全局上下文
  *
- * @author ASpring
+ * @author Abel
  * @version 1.0
  * @since 2016-04-14 09:04
  */

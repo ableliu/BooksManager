@@ -7,7 +7,7 @@ import win.aspring.common.BuildConfig;
 /**
  * 日志打印类
  *
- * @author ASpring
+ * @author Abel
  * @version 1.0
  * @since 2016-04-15 14:28
  */

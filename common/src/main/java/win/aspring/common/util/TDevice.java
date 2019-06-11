@@ -22,10 +22,6 @@ import win.aspring.common.widget.CustomToast;
 
 /**
  * android版本设置
- *
- * @author ASpring
- * @version 1.0
- * @since 2016-04-15 10:54
  */
 public class TDevice {
     private static Boolean hasCamera = null;
