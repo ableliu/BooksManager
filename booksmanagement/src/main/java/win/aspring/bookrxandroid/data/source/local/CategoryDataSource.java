@@ -113,14 +113,14 @@ public class CategoryDataSource implements BaseDataSource<Category> {
         Category cat = null;
         if (c != null && c.getCount() > 0) {
             c.moveToFirst();
-            int Id = c.getInt(c.getColumnIndexOrThrow(AppConfig.ID));
+            int cId = c.getInt(c.getColumnIndexOrThrow(AppConfig.ID));
             String categoryId = c.getString(c.getColumnIndexOrThrow(AppConfig.CATEGORY_ID));
             String cname = c.getString(c.getColumnIndexOrThrow(AppConfig.CNAME));
             String desc = c.getString(c.getColumnIndexOrThrow(AppConfig.DESC));
             String createTime = c.getString(c.getColumnIndexOrThrow(AppConfig.CREATE_TIME));
             String updateTime = c.getString(c.getColumnIndexOrThrow(AppConfig.UPDATE_TIME));
 
-            cat = new Category(Id, categoryId, cname, desc, createTime, updateTime);
+            cat = new Category(cId, categoryId, cname, desc, createTime, updateTime);
         }
         if (c != null) {
             c.close();
@@ -161,14 +161,14 @@ public class CategoryDataSource implements BaseDataSource<Category> {
 
         if (c != null && c.getCount() > 0) {
             c.moveToFirst();
-            int Id = c.getInt(c.getColumnIndexOrThrow(AppConfig.ID));
+            int cId = c.getInt(c.getColumnIndexOrThrow(AppConfig.ID));
             String categoryId = c.getString(c.getColumnIndexOrThrow(AppConfig.CATEGORY_ID));
             String cname = c.getString(c.getColumnIndexOrThrow(AppConfig.CNAME));
             String desc = c.getString(c.getColumnIndexOrThrow(AppConfig.DESC));
             String createTime = c.getString(c.getColumnIndexOrThrow(AppConfig.CREATE_TIME));
             String updateTime = c.getString(c.getColumnIndexOrThrow(AppConfig.UPDATE_TIME));
 
-            cate = new Category(Id, categoryId, cname, desc, createTime, updateTime);
+            cate = new Category(cId, categoryId, cname, desc, createTime, updateTime);
         }
         if (c != null) {
             c.close();
@@ -214,7 +214,6 @@ public class CategoryDataSource implements BaseDataSource<Category> {
      */
     @Override
     public void deleteData(int id, @NonNull HandlerCallBack callBack) {
-        SQLiteDatabase db = mHelper.getWritableDatabase();
 
         String selection = AppConfig.ID + "=?";
         String[] selectionArgs = {String.valueOf(id)};
@@ -222,19 +221,20 @@ public class CategoryDataSource implements BaseDataSource<Category> {
         Category cate = getData(id);
         if (cate != null) {
             List<Book> books = BookDataSource.getInstance(context).getBooks(cate.getCategory_id());
-            if (books == null && books.isEmpty()) {
+            if (books == null || books.isEmpty()) {
+                SQLiteDatabase db = mHelper.getWritableDatabase();
                 int i = db.delete(AppConfig.TABLE_CATEGORY, selection, selectionArgs);
                 if (i > 0) {
                     callBack.onSuccess();
                 } else {
                     callBack.onFailure();
                 }
+
+                db.close();
             } else {
                 callBack.onFailure();
             }
         }
-
-        db.close();
     }
 
     /**
@@ -282,14 +282,14 @@ public class CategoryDataSource implements BaseDataSource<Category> {
         Category cat = null;
         if (c != null && c.getCount() > 0) {
             c.moveToFirst();
-            int Id = c.getInt(c.getColumnIndexOrThrow(AppConfig.ID));
+            int id = c.getInt(c.getColumnIndexOrThrow(AppConfig.ID));
             String categoryId = c.getString(c.getColumnIndexOrThrow(AppConfig.CATEGORY_ID));
             String cname = c.getString(c.getColumnIndexOrThrow(AppConfig.CNAME));
             String desc = c.getString(c.getColumnIndexOrThrow(AppConfig.DESC));
             String createTime = c.getString(c.getColumnIndexOrThrow(AppConfig.CREATE_TIME));
             String updateTime = c.getString(c.getColumnIndexOrThrow(AppConfig.UPDATE_TIME));
 
-            cat = new Category(Id, categoryId, cname, desc, createTime, updateTime);
+            cat = new Category(id, categoryId, cname, desc, createTime, updateTime);
         }
         if (c != null) {
             c.close();

@@ -12,7 +12,7 @@ import java.util.List;
 import win.aspring.bookrxandroid.AppConfig;
 import win.aspring.bookrxandroid.data.Book;
 import win.aspring.bookrxandroid.data.source.BaseDataSource;
-import win.aspring.bookrxandroid.util.StringUtils;
+import win.aspring.common.util.StringUtils;
 
 /**
  * 图书

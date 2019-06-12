@@ -111,14 +111,14 @@ public class CategoryDataSource implements BaseDataSource<Category> {
             Category cat = null;
             if (c != null && c.getCount() > 0) {
                 c.moveToFirst();
-                int Id = c.getInt(c.getColumnIndexOrThrow(AppConfig.ID));
+                int cId = c.getInt(c.getColumnIndexOrThrow(AppConfig.ID));
                 String categoryId = c.getString(c.getColumnIndexOrThrow(AppConfig.CATEGORY_ID));
                 String cname = c.getString(c.getColumnIndexOrThrow(AppConfig.CNAME));
                 String desc = c.getString(c.getColumnIndexOrThrow(AppConfig.DESC));
                 String createTime = c.getString(c.getColumnIndexOrThrow(AppConfig.CREATE_TIME));
                 String updateTime = c.getString(c.getColumnIndexOrThrow(AppConfig.UPDATE_TIME));
 
-                cat = new Category(Id, categoryId, cname, desc, createTime, updateTime);
+                cat = new Category(cId, categoryId, cname, desc, createTime, updateTime);
             }
 
             if (c != null) {
@@ -268,14 +268,14 @@ public class CategoryDataSource implements BaseDataSource<Category> {
         Category cat = null;
         if (c != null && c.getCount() > 0) {
             c.moveToFirst();
-            int Id = c.getInt(c.getColumnIndexOrThrow(AppConfig.ID));
+            int cId = c.getInt(c.getColumnIndexOrThrow(AppConfig.ID));
             String categoryId = c.getString(c.getColumnIndexOrThrow(AppConfig.CATEGORY_ID));
             String cname = c.getString(c.getColumnIndexOrThrow(AppConfig.CNAME));
             String desc = c.getString(c.getColumnIndexOrThrow(AppConfig.DESC));
             String createTime = c.getString(c.getColumnIndexOrThrow(AppConfig.CREATE_TIME));
             String updateTime = c.getString(c.getColumnIndexOrThrow(AppConfig.UPDATE_TIME));
 
-            cat = new Category(Id, categoryId, cname, desc, createTime, updateTime);
+            cat = new Category(cId, categoryId, cname, desc, createTime, updateTime);
         }
         if (c != null) {
             c.close();

@@ -103,6 +103,7 @@ public class BookFragment extends BaseFragment {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(categories -> {
+                    hideWaitDialog();
                     if (categories != null && !categories.isEmpty()) {
                         mPager.setAdapter(new BookListAdapter(getChildFragmentManager(), categories));
                     }
