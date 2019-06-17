@@ -318,7 +318,6 @@ public class BookDataSource implements BaseDataSource<Book> {
         if (c != null) {
             c.close();
         }
-
         db.close();
 
         return books;
@@ -377,13 +376,13 @@ public class BookDataSource implements BaseDataSource<Book> {
                 }
             }
 
+            emitter.onNext(books);
+
             if (c != null) {
                 c.close();
             }
 
             db.close();
-
-            emitter.onNext(books);
         });
     }
 
@@ -437,17 +436,17 @@ public class BookDataSource implements BaseDataSource<Book> {
                         phone, borrowTime, backTime, createTime, updateTime);
             }
 
-            if (c != null) {
-                c.close();
-            }
-
-            db.close();
-
             if (null != book) {
                 emitter.onNext(book);
             } else {
                 emitter.onError(new NullPointerException("Book is Null"));
             }
+
+            if (c != null) {
+                c.close();
+            }
+
+            db.close();
         });
     }
 
@@ -477,9 +476,9 @@ public class BookDataSource implements BaseDataSource<Book> {
             String whereClause = AppConfig.ID + "=" + id;
 
             int i = db.update(AppConfig.TABLE_BOOK, values, whereClause, null);
+            emitter.onNext(i);
 
             db.close();
-            emitter.onNext(i);
         });
     }
 
@@ -502,9 +501,9 @@ public class BookDataSource implements BaseDataSource<Book> {
             String[] whereArgs = {String.valueOf(id)};
 
             int i = db.update(AppConfig.TABLE_BOOK, values, whereClause, whereArgs);
+            emitter.onNext(i);
 
             db.close();
-            emitter.onNext(i);
         });
     }
 
@@ -528,9 +527,9 @@ public class BookDataSource implements BaseDataSource<Book> {
             String[] whereArgs = {String.valueOf(id)};
 
             int i = db.update(AppConfig.TABLE_BOOK, values, whereClause, whereArgs);
+            emitter.onNext(i);
 
             db.close();
-            emitter.onNext(i);
         });
     }
 }

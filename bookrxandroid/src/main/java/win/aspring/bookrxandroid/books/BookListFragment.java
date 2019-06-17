@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +30,15 @@ import win.aspring.common.base.BaseFragment;
  * interface.
  */
 public class BookListFragment extends BaseFragment implements BookAdapter.OnDeleteInteractionListener {
+    /**
+     * Fragment的View加载完毕的标记
+     */
+    private boolean isViewCreated = false;
+
+    /**
+     * Fragment对用户可见的标记
+     */
+    private boolean isUIVisible = false;
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private static final String ARG_CATEGORY_ID = "category-id";
@@ -77,9 +88,28 @@ public class BookListFragment extends BaseFragment implements BookAdapter.OnDele
         mDataSource = BookDataSource.getInstance(mActivity);
 
         initView(view);
-        initData();
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        isViewCreated = true;
+        lazyLoad();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        if (isVisibleToUser) {
+            isUIVisible = true;
+            lazyLoad();
+        } else {
+            isUIVisible = false;
+        }
     }
 
     @Override
@@ -95,11 +125,19 @@ public class BookListFragment extends BaseFragment implements BookAdapter.OnDele
         }
     }
 
+    private void lazyLoad() {
+        if (isViewCreated && isUIVisible) {
+            initData();
+            isViewCreated = false;
+            isUIVisible = false;
+        }
+    }
+
     @Override
     public void initData() {
         mDataSource.getBooks(mCateID)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(books -> {
                     if (null != books && !books.isEmpty()) {
                         BookAdapter adapter = new BookAdapter(books, mListener);
@@ -143,13 +181,16 @@ public class BookListFragment extends BaseFragment implements BookAdapter.OnDele
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+
+        isViewCreated = false;
+        isUIVisible = false;
     }
 
     @Override
     public void onDeleteListener(Book item) {
         mDataSource.deleteData(item.getId())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(integer -> {
                     if (integer > 0) {
                         showToast("删除成功！");

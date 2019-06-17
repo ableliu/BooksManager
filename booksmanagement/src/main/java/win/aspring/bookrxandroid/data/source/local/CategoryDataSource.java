@@ -214,26 +214,22 @@ public class CategoryDataSource implements BaseDataSource<Category> {
      */
     @Override
     public void deleteData(int id, @NonNull HandlerCallBack callBack) {
-
         String selection = AppConfig.ID + "=?";
         String[] selectionArgs = {String.valueOf(id)};
 
-        Category cate = getData(id);
-        if (cate != null) {
-            List<Book> books = BookDataSource.getInstance(context).getBooks(cate.getCategory_id());
-            if (books == null || books.isEmpty()) {
-                SQLiteDatabase db = mHelper.getWritableDatabase();
-                int i = db.delete(AppConfig.TABLE_CATEGORY, selection, selectionArgs);
-                if (i > 0) {
-                    callBack.onSuccess();
-                } else {
-                    callBack.onFailure();
-                }
-
-                db.close();
+        List<Book> books = BookDataSource.getInstance(context).getBooks(String.valueOf(id));
+        if (books == null || books.isEmpty()) {
+            SQLiteDatabase db = mHelper.getWritableDatabase();
+            int i = db.delete(AppConfig.TABLE_CATEGORY, selection, selectionArgs);
+            if (i > 0) {
+                callBack.onSuccess();
             } else {
                 callBack.onFailure();
             }
+
+            db.close();
+        } else {
+            callBack.onFailure();
         }
     }
 

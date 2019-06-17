@@ -163,15 +163,12 @@ public class CategoryDataSource implements BaseDataSource<Category> {
     @Override
     public Observable<Integer> deleteData(final int id) {
         return Observable.fromCallable(() -> {
-            int i = 0;
-            SQLiteDatabase db = mHelper.getWritableDatabase();
-            Category cate = getCategory(id);
-            if (cate != null) {
-                List<Book> books = BookDataSource.getInstance(context).getBookOfCategory(cate.getCategory_id());
-                if (books != null && !books.isEmpty()) {
-                    i = -1;
-                }
+            int i;
+            List<Book> books = BookDataSource.getInstance(context).getBookOfCategory(String.valueOf(id));
+            if (books != null && !books.isEmpty()) {
+                i = -1;
             } else {
+                SQLiteDatabase db = mHelper.getWritableDatabase();
                 String selection = AppConfig.ID + "=?";
                 String[] selectionArgs = {String.valueOf(id)};
 
